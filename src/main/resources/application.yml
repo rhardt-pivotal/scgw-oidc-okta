@@ -1,0 +1,41 @@
+#oidc:
+#  issuer-uri: https://dev-545245.oktapreview.com/oauth2/default
+#  client-id: {clientId}
+#  client-secret: {clientSecret}
+#
+#spring:
+#  security:
+#    oauth2:
+#      client:
+#        provider:
+#          okta:
+#            issuer-uri: ${oidc.issuer-uri}
+#        registration:
+#          login:
+#            okta:
+#              client-id: ${oidc.client-id}
+#              client-secret: ${oidc.client-secret}
+#              scope: openid email profile
+#      resourceserver:
+#        jwt:
+#          issuer-uri: ${oidc.issuer-uri}
+okta:
+  oauth2:
+    issuer: <issuer>
+    groupsClaim: groups
+    clientId: <client-id>
+
+logging:
+  level:
+    org:
+      springframework: INFO
+
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: '*'
+            allowedMethods: '*'
+            allowedHeaders: '*'
